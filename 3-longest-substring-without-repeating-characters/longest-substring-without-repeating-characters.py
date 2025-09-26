@@ -4,6 +4,11 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        '''
+        ------------
+        My code
+        ------------
+
         currentString = []
         counts = []
         count = 0
@@ -18,4 +23,19 @@ class Solution(object):
             currentString.append(c)
         counts.append(count)
         return max(counts) if counts else 0
+        '''
+
+        charSet = set()
+        left = 0
+        count = 0
+
+        for right in range(len(s)):
+            while s[right] in charSet:
+                charSet.remove(s[left])
+                left += 1
+            charSet.add(s[right])
+            count = max(count, right - left + 1)
+
+        return count
+
         
